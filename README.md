@@ -32,39 +32,6 @@ Users authenticate through **AWS Cognito** and securely upload/download files us
 
 ### Architecture Diagram
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Client / Browser                     │
-└───────────────────────┬─────────────────────────────────┘
-                        │ HTTPS + JWT
-        ┌───────────────▼────────────────────────┐
-        │        API Gateway (HTTP API)          │
-        │  Routes: /upload        /presign       │
-        └───────────────┬────────────────────────┘
-                        │  Authorization
-                        │
-        ┌───────────────▼────────────────────────┐
-        │     Cognito JWT Token Validation       │
-        └───────────────┬────────────────────────┘
-                        │ (If valid)
-             ┌──────────┴────────────┐
-             │                       │
-┌────────────▼─────────────┐   ┌─────▼──────────────┐
-│ Lambda: Uploader         │   │ Lambda: Presigner  │
-│ (Generate PUT URL)       │   │ (Generate GET URL) │
-└───────────┬──────────────┘   └─────────┬──────────┘
-            │                            │
-     ┌──────▼────────────────────────────▼───────┐
-     │         Amazon S3 (secure bucket)         │
-     └───────────────────────────────────────────┘
-                        │
-     ┌──────────────────▼─────────────────────────┐
-     │     DynamoDB Tables (audit + metadata)     │
-     └────────────────────────────────────────────┘
-```
-
-**Architecture Diagram**
-
 ![Architecture Diagram](images/architecture-diagram.svg)
 
 ---
