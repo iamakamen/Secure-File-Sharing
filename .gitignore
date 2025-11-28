@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+
+# Build Artifacts
+/build/
+*.zip
+
+# OS/Junk Files
+.DS_Store
+Thumbs.db
