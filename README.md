@@ -6,7 +6,7 @@
 
 ---
 
-# Secure Serverless File Sharing (AWS)
+# Secure Serverless File Sharing
 
 ![Thumbnail](images/thumbnail.png)
 
